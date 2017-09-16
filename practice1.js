@@ -1,10 +1,11 @@
 const _ = require("lodash")
 const M = require("moment")
+const chalk = require('chalk')
 const MomentRange = require('moment-range')
 
 const moment = MomentRange.extendMoment(M)
 
-let year = now.range('year')
+let year = moment().range('year')
 
 for(const month of year. by('month'))
 {
