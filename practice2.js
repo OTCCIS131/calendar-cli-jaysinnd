@@ -1,13 +1,23 @@
-const M = require('moment')
+const _ = require("lodash")
+const M = require("moment")
+const chalk = require('chalk')
 const MomentRange = require('moment-range')
-const moment = MomentRange.extendMoment(M)
-const startWeek =  moment().startOf('month').week();
-const endWeek =  moment().endOf('month').week();
 
-let calendar = []
-for(var week = startWeek; week<<endWeek;week++){
-    calendar.push({
-        week:week,
-        days:Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
+const moment = MomentRange.extendMoment(M)
+
+let year = moment().range('year')
+
+for(const month of year. by('month'))
+{
+    console.log(_.pad(month.format('MMMM'), 26, '-'))
+    console.log('S   M   T   W   Th   F   S ')
+
+    let days =  Array.from(month.range('month').by('days'))
+    let paddedDays = _.map(days, day => {
+        let date = day.date()
+        return _.padEnd(date, 2, ' ')
+        
+    
     })
+    console.log(paddedDays)
 }
