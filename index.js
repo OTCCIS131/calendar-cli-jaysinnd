@@ -21,7 +21,7 @@ _.forEach(Array.from(year.by('months')), month => {
     // Then, we'll perform several operations on this array of days
     _.chain(monthDays)
         .map(day => { // Transforms items in the array
-            let dateOutput = day.date() // TODO: Change this to output a two-digit date
+            let dateOutput = day.format('DD') // TODO: Change this to output a two-digit date
 
             // TODO: Highlight September 10th
             // TODO: Highlight YOUR birthday!
@@ -29,13 +29,13 @@ _.forEach(Array.from(year.by('months')), month => {
             return dateOutput
         })
         .tap(days => { // Allows us to manipulate the collection while chaining
-            (days.unshift(' ')) // using days.unshift('  '))so that the 1st ends up under the right day column
+            (days.unshift(firstDay)) // using days.unshift('  '))so that the 1st ends up under the right day column
             
         })
         .chunk(7) // Changes the array of days to be an array of weeks, each week containing 7 items from the days array
         .each(week => {
             // TODO: Join the days together to form one string representing the week
-            console.log( _.padEnd(week, 2, ' ')) // TODO: console.log it
+            console.log( _.padEnd(week, 2, '  ')) // TODO: console.log it
         })
         .value() // This triggers the above operations on the chain
 
